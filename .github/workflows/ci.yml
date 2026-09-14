@@ -30,7 +30,7 @@ jobs:
         run: |
           pytest
 
-             - name: Check Docker Hub secrets
+      - name: Check Docker Hub secrets
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME1 }}
           DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN1 }}
