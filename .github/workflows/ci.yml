@@ -30,6 +30,23 @@ jobs:
         run: |
           pytest
 
+             - name: Check Docker Hub secrets
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME1 }}
+          DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN1 }}
+        run: |
+          if [ -z "$DOCKER_USERNAME" ]; then
+            echo "DOCKERHUB_USERNAME1 is EMPTY or NOT AVAILABLE"
+          else
+            echo "DOCKERHUB_USERNAME1 is available"
+          fi
+
+          if [ -z "$DOCKER_TOKEN" ]; then
+            echo "DOCKERHUB_TOKEN1 is EMPTY or NOT AVAILABLE"
+          else
+            echo "DOCKERHUB_TOKEN1 is available"
+          fi
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
